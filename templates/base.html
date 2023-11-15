@@ -4,6 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Flask App{% endblock %}</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+    
+        #content {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    
+        h1, h2 {
+            color: #fff;
+            flex-basis: 100%;
+            background-color: darkgrey;
+            border-radius: 10px;
+            margin: 0 0 10px 0;
+            padding: 5px 8px;
+            border: 1px solid black;
+        }
+    
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row; /* Đặt hướng flex thành dòng */
+            align-items: center; /* Canh giữa các phần tử theo chiều dọc */
+            margin-bottom: 20px;
+            flex-basis: 100%;
+        }
+    
+        input[type="file"] {
+            display: none;
+        }
+    
+        label {
+            display: block;
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            border: 1px solid gray;
+            border-radius: 10px;
+            margin-right: 5px;
+        }
+    
+        button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            border: 1px solid gray;
+            cursor: pointer;
+            border-radius: 10px;
+            height: 100%;
+        }
+    
+        .image-container {
+            flex-basis: 48%; /* Điều chỉnh kích thước của container ảnh để chúng nằm cùng một hàng */
+            margin-right: 2%; /* Tạo khoảng cách giữa 2 cột */
+        }
+    
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
     
