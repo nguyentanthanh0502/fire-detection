@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %}hello{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f8f8f8;
+        margin: 0;
+        padding: 0;
+    }
+
+    #content {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 800px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2 {
+        color: #333;
+        flex-basis: 100%;
+    }
+
+    form {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row; /* Đặt hướng flex thành dòng */
+        align-items: center; /* Canh giữa các phần tử theo chiều dọc */
+        margin-bottom: 20px;
+        flex-basis: 100%;
+    }
+
+    input[type="file"] {
+        display: none;
+    }
+
+    label {
+        display: block;
+        background-color: #3498db;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+        border: 1px solid gray;
+        border-radius: 10px;
+        margin-right: 5px;
+    }
+
+    button {
+        background-color: #3498db;
+        color: #fff;
+        padding: 10px;
+        border: 1px solid gray;
+        cursor: pointer;
+        border-radius: 10px;
+        height: 100%;
+    }
+
+    .image-container {
+        flex-basis: 48%; /* Điều chỉnh kích thước của container ảnh để chúng nằm cùng một hàng */
+        margin-right: 2%; /* Tạo khoảng cách giữa 2 cột */
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        margin-top: 10px;
+    }
+</style>
+
+<h1>Upload Image</h1>
+<form action="/" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" accept="image/*" id="upload" required>
+    <label for="upload">Choose a file</label>
+    <button type="submit">Submit</button>
+</form>
+
+{% if input_image or output_image %}
+    <div class="image-container">
+        {% if input_image %}
+            <h2>Input Image</h2>
+            <img src="{{ input_image }}" alt="Input Image">
+        {% endif %}
+    </div>
+
+    <div class="image-container">
+        {% if output_image %}
+            <h2>Output Image</h2>
+            <img src="{{ output_image }}" alt="Output Image">
+        {% endif %}
+    </div>
+{% endif %}
+</div>
+{% endblock %}
