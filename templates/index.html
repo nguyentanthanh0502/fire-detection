@@ -21,17 +21,28 @@
 </form>
 
 {% if input_image or output_image %}
-<div class="row shadow-sm pb-3  border border-secondary-subtle border-opacity-25">
-    <div class="col-sm-6">
+<div class="row">
+    <div class="col-sm-6 ps-0">
         {% if input_image %}
-        <h4>Input Image</h4>
-        <img class="rounded" src="{{ input_image }}" alt="Input Image" style="width:100%">
+        <div class="card shadow-sm">
+            <h4 class="card-header">Input Image</h4>
+            <div class="card-body">
+                <img class="rounded" src="{{ input_image }}" alt="Input Image" style="width:100%">
+            </div>
+        </div>
+        
+        
         {% endif %}
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-6 pe-0">
         {% if output_image %}
-        <h4>Output Image</h4>
-        <img class="rounded" src="{{ output_image }}" alt="Output Image" style="width:100%">
+        <div class="card shadow-sm">
+            <h4 class="card-header">Output Image</h4>
+            <div class="card-body">
+                <img class="rounded" src="{{ output_image }}" alt="Output Image" style="width:100%">
+            </div>
+        </div>
+        
         {% endif %}
     </div>
 </div>
