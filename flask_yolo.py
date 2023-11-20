@@ -16,7 +16,7 @@ def detect_objects():
         # Xử lý yêu cầu POST
         image = request.files['file']
         if image:
-            input_image_path = os.path.join(app.config['UPLOAD_FOLDER'], image.filename)
+            input_image_path = os.path.join(app.config['UPLOAD_FOLDER'], 'input.jpg')
             image.save(input_image_path)
             image = cv2.imread(input_image_path)
             results = yolo_model.predict(source=image)

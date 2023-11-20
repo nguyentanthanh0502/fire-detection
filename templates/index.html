@@ -3,25 +3,25 @@
 {% block title %}Fire Detection App{% endblock %}
 
 {% block content %}
-    <h3>Upload Image</h3>
-    <form action="/" Method="post" enctype="multipart/form-data">
-        <div class="row mb-5 shadow-sm pb-3">
-            <div class="col-sm-6">
-                <div class="mb-3">
-                    <input type="file" name="file" Accept="image/*" id="upload" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+<h3>Upload file</h3>
+<form action="/" Method="post" enctype="multipart/form-data">
+    <div class="row shadow-sm  mb-5 pb-3 pt-3 border border-secondary-subtle border-opacity-25">
+        <div class="col-sm-6">
+            <div class="mb-3">
+                <input type="file" name="file" Accept="image/*" id="upload" required>
             </div>
-            
-            <div class="col-sm-6">
-                
-            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </div>
-        
-    </form>
+
+        <div class="col-sm-6">
+
+        </div>
+    </div>
+
+</form>
 
 {% if input_image or output_image %}
-<div class="row mb-5 shadow-sm pb-3">
+<div class="row shadow-sm pb-3  border border-secondary-subtle border-opacity-25">
     <div class="col-sm-6">
         {% if input_image %}
         <h4>Input Image</h4>
