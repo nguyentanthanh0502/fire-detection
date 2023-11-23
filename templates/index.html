@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Fire Detection App{% endblock %}
+{% block title %}Fire Detection{% endblock %}
 
 {% block content %}
 <h3>Upload file</h3>
@@ -8,13 +8,13 @@
     <div class="row shadow-sm  mb-5 pb-3 pt-3 border border-secondary-subtle border-opacity-25">
         <div class="col-sm-6">
             <div class="mb-3">
-                <input type="file" name="file" Accept="image/*" id="upload" required>
+                <input type="file" name="file" accept="image/*, video/*" required>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
 
         <div class="col-sm-6">
-
+            
         </div>
     </div>
 
@@ -30,9 +30,8 @@
                 <img class="rounded" src="{{ input_image }}" alt="Input Image" style="width:100%">
             </div>
         </div>
-        
-        
         {% endif %}
+
     </div>
     <div class="col-sm-6 pe-0">
         {% if output_image %}
@@ -42,8 +41,39 @@
                 <img class="rounded" src="{{ output_image }}" alt="Output Image" style="width:100%">
             </div>
         </div>
-        
         {% endif %}
+
+    </div>
+</div>
+{% endif %}
+
+{% if input_video or output_video %}
+<div class="row">
+    <div class="col-sm-6 ps-0">
+        {% if input_video %}
+        <div class="card shadow-sm">
+            <h4 class="card-header">Input Video</h4>
+            <div class="card-body">
+                <video width="100%"  controls>
+                    <source src="{{ input_video }}" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+    <div class="col-sm-6 pe-0">
+        {% if output_video %}
+        <div class="card shadow-sm">
+            <h4 class="card-header">Output Video</h4>
+            <div class="card-body">
+                <video width="100%"  controls>
+                    <source src="{{ output_video }}" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        {% endif %}
+
     </div>
 </div>
 {% endif %}
