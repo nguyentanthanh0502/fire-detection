@@ -6,28 +6,23 @@
 <h3>Upload file</h3>
 <form action="/" Method="post" enctype="multipart/form-data">
     <div class="row shadow-sm  mb-5 pb-3 pt-3 border border-secondary-subtle border-opacity-25">
-        <div class="col-sm-6">
+        <div class="col-sm-12">
             <div class="mb-3">
                 <input type="file" name="file" accept="image/*, video/*" required>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
-
-        <div class="col-sm-6">
-            
-        </div>
     </div>
 
 </form>
-
-{% if input_image or output_image %}
+{% if input_image and output_image %}
 <div class="row">
     <div class="col-sm-6 ps-0">
         {% if input_image %}
         <div class="card shadow-sm">
-            <h4 class="card-header">Input Image</h4>
+            <h4 class="card-header">Input Images</h4>
             <div class="card-body">
-                <img class="rounded" src="{{ input_image }}" alt="Input Image" style="width:100%">
+                <img class="rounded" src=" {{ input_image }}" alt="Input Image" style="width:100%">
             </div>
         </div>
         {% endif %}
@@ -36,9 +31,9 @@
     <div class="col-sm-6 pe-0">
         {% if output_image %}
         <div class="card shadow-sm">
-            <h4 class="card-header">Output Image</h4>
+            <h4 class="card-header">Output Images</h4>
             <div class="card-body">
-                <img class="rounded" src="{{ output_image }}" alt="Output Image" style="width:100%">
+                <img class="rounded" src=" {{ output_image }}" alt="Input Image" style="width:100%">
             </div>
         </div>
         {% endif %}
@@ -47,29 +42,16 @@
 </div>
 {% endif %}
 
-{% if input_video or output_video %}
-<div class="row">
-    <div class="col-sm-6 ps-0">
-        {% if input_video %}
-        <div class="card shadow-sm">
-            <h4 class="card-header">Input Video</h4>
-            <div class="card-body">
-                <video width="100%"  controls>
-                    <source src="{{ input_video }}" type="video/mp4">
-                </video>
-            </div>
-        </div>
-        {% endif %}
 
-    </div>
-    <div class="col-sm-6 pe-0">
+{% if output_video %}
+<div class="row d-flex justify-content-center">
+    
+    <div class="col-sm-6">
         {% if output_video %}
         <div class="card shadow-sm">
             <h4 class="card-header">Output Video</h4>
             <div class="card-body">
-                <video width="100%"  controls>
-                    <source src="{{ output_video }}" type="video/mp4">
-                </video>
+                <img id="output-image" class="rounded" src="" alt="Input Image" style="width:100%">
             </div>
         </div>
         {% endif %}
@@ -77,5 +59,23 @@
     </div>
 </div>
 {% endif %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+<script>
+    var socket = io.connect('http://localhost:' + location.port);
+
+
+    socket.on('update_image', function(data) {
+        var outputImage = document.getElementById('output-image');
+        
+        // Thêm tham số ngẫu nhiên để cache busting
+        var timestamp = new Date().getTime();
+        var newSrc = data.image_path + '?t=' + timestamp;
+    
+        // Cập nhật src với URL mới
+        outputImage.src = newSrc;
+    });
+    
+</script>
+
 
 {% endblock %}
